@@ -1,2 +1,2 @@
 # CSUcaym.github.io
-caym private lab.
+caym private AI lab.
