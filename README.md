@@ -1,2 +1,2 @@
 # CSUcaym.github.io
-caym private web.
+caym private lab.
