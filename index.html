@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我的个人主页</title>
+    <style>
+        /* 默认（浅色模式） */
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            font-family: sans-serif;
+            text-align: center;
+            padding-top: 80px;
+            transition: all 0.3s;  /* 切换时有平滑过渡动画 */
+        }
+
+        /* 深色模式（body 加上 dark 类时生效） */
+        body.dark {
+            background-color: #1a1a2e;
+            color: #eaeaea;
+        }
+
+        /* 开关按钮样式 */
+        .switch-btn {
+            padding: 10px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: #4a6fa5;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>你好，我是XXX</h1>
+    <p>欢迎来到我的个人网页。</p>
+    <button class="switch-btn" onclick="toggleDark()">🌙 切换深色模式</button>
+
+    <script>
+        // 页面加载时：读取记忆，如果上次是深色，自动切换
+        if (localStorage.getItem("darkMode") === "on") {
+            document.body.classList.add("dark");
+        }
+
+        function toggleDark() {
+            document.body.classList.toggle("dark");
+
+            // 记住当前状态
+            if (document.body.classList.contains("dark")) {
+                localStorage.setItem("darkMode", "on");
+            } else {
+                localStorage.setItem("darkMode", "off");
+            }
+        }
+    </script>
+</body>
+</html>
