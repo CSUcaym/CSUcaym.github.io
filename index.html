@@ -1,58 +1,59 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>我的个人主页</title>
-    <style>
-        /* 默认（浅色模式） */
-        body {
-            background-color: #ffffff;
-            color: #333333;
-            font-family: sans-serif;
-            text-align: center;
-            padding-top: 80px;
-            transition: all 0.1s;  /* 切换时有平滑过渡动画 */
-        }
-
-        /* 深色模式（body 加上 dark 类时生效） */
-        body.dark {
-            background-color: #333333;
-            color: #ffffff;
-        }
-
-        /* 开关按钮样式 */
-        .switch-btn {
-            padding: 10px 24px;
-            font-size: 16px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            background-color: #663399
-            color: white;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAYM</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; background: #f0f0f0; }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  /* 16:10 舞台，等比还原 2560x1600 设计稿 */
+  .stage {
+    position: relative;
+    width: min(100vw, 160vh);
+    aspect-ratio: 16 / 10;
+    background: #f0f0f0;
+    overflow: hidden;
+  }
+  .stage img {
+    position: absolute;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  /* 拼贴主图：左缘 684/2560，顶部 80/1600，宽 1876/2560，右边贴齐 */
+  .collage {
+    left: 26.71875%;
+    top: 5%;
+    width: 73.28125%;
+  }
+  /* CAYM logo：1080x1080 原图置于 (-362, -334)，画面内只显示 logo 本体 */
+  .logo {
+    left: -14.140625%;
+    top: -20.875%;
+    width: 42.1875%;
+    z-index: 2;
+  }
+  /* 符号组合 ( /-\ >/ #\：1080x1080 原图置于 (-314, 253) */
+  .cg {
+    left: -12.265625%;
+    top: 15.8125%;
+    width: 42.1875%;
+    z-index: 2;
+  }
+</style>
 </head>
 <body>
-    <h1>hello Im CAYM</h1>
-    <p>wellcome to my AI private web page</p>
-    <button class="switch-btn" onclick="toggleDark()">SWITCH colors</button>
-
-    <script>
-        // 页面加载时：读取记忆，如果上次是深色，自动切换
-        if (localStorage.getItem("darkMode") === "on") {
-            document.body.classList.add("dark");
-        }
-
-        function toggleDark() {
-            document.body.classList.toggle("dark");
-
-            // 记住当前状态
-            if (document.body.classList.contains("dark")) {
-                localStorage.setItem("darkMode", "on");
-            } else {
-                localStorage.setItem("darkMode", "off");
-            }
-        }
-    </script>
+  <main class="stage">
+    <img class="collage" src="assets/collage.jpg" alt="">
+    <img class="logo" src="assets/logo.png" alt="CAYM">
+    <img class="cg" src="assets/cg.png" alt="">
+  </main>
 </body>
 </html>
